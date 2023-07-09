@@ -2,26 +2,94 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+*::selection{
+  background-color: #ff0;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+html{
+  scroll-behavior: smooth;
+}
+
+html,body{
+  height: 100%;
+  overflow-x: hidden;
+}
+
+body{
+  display: flex;
+  flex-direction: column;
+}
+
+main{
+  flex-grow: 1;
+}
+
+a{
+  display: block;
+  width: fit-content;
+}
+
+.note{
+  border: 2px solid rgba(0, 0, 0, 0.7);
+  background-color: rgba(255, 255, 255, 0.8);
+  border-bottom-left-radius: 15px 255px;
+  border-bottom-right-radius: 225px 15px;
+  border-top-left-radius: 255px 15px;
+  border-top-right-radius: 15px 225px;
+  transition: transform .5s, border-color .5s;
+}
+
+.note:nth-of-type(odd){
+  border-bottom-left-radius: 185px 25px;
+  border-bottom-right-radius: 20px 205px;
+  border-top-left-radius: 125px 25px;
+  border-top-right-radius: 10px 205px;
+}
+
+.note:hover{
+  border-color: #ffe100;
+}
+
+@layer utilities{
+
+  /* Paper Styling */
+
+  .paperLines{
+    background-image: linear-gradient(#bababa 1px, transparent 0px);
+    background-size: 100% 2em;
   }
-}
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  .paperHoles{
+    display: grid;
+    justify-content: space-around;
+    align-items: center;
+    height: 100%;
+    width: 12%;
+    position: absolute;
+  }
+
+  .paperHoles::before,
+  .paperHoles::after{
+    content: "";
+    height: inherit;
+    width: 100%;
+    position: absolute;
+  }
+
+  .paperHoles::before{
+    left: 0;
+    border-right: 1px double rgba(255,0,0,.7);
+  }
+
+  .paperHoles::after{
+    left: -2.5%;
+    border-right: 1px double rgba(255,0,0,.7);
+  }
+
+  .paperHoles span{
+    background-color: #000;
+    border-radius: 50%;
+    height: 1.5rem;
+    width: 1.5rem;
+  }
 }
