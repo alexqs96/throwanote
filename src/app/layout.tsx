@@ -8,7 +8,6 @@ const virgilFont = localFont({ src: "../../public/fonts/Virgil.woff2" });
 
 export const metadata = {
   title: "Throw a Note",
-  description: "Crea notas anonimas publicas o privadas en throw a note.",
   openGraph: {
     type: "website",
     url: "https://throwanote.vercel.app",
