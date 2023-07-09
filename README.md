@@ -1,5 +1,7 @@
 # Throw A Note 
 
+## Estado: En Desarrollo
+
 <a href="https://throwanote.vercel.app" ><img width=400 src="./public/img/og_image.png"></a>
 
 ### Throw A Note es una pagina de Notas anonimas, podes publicar notas publicas como privadas.
