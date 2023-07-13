@@ -7,7 +7,6 @@ import Header from "@/components/Header";
 const virgilFont = localFont({ src: "../fonts/Virgil.woff2" });
 
 export const metadata = {
-  metadataBase: new URL(`https://throwanote.vercel.app`),
   title: "Throw a Note",
   openGraph:{
     type: "website",
