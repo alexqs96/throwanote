@@ -19,6 +19,34 @@ export const metadata = {
   }
 };
 
+function Footer() {
+  return (
+    <footer className="absolute bottom-10 z-10 px-[1%] max-lg:hidden">
+      <div className="md:flex hidden items-center gap-6 w-fit rotate-[20deg]">
+        <a
+          className="-mt-8 -rotate-12 transition-transform duration-200 hover:-rotate-[19deg]"
+          href="https://www.linkedin.com/in/alexander-mamani"
+          target="_blank"
+          rel="noreferrer noopener"
+          aria-label="Linkedin Profile"
+        >
+          <LinkedinLogo size={54} />
+        </a>
+
+        <a
+          className="transition-transform duration-200 hover:-rotate-[19deg]"
+          href="https://github.com/alexqs96"
+          target="_blank"
+          rel="noreferrer noopener"
+          aria-label="Github Profile"
+        >
+          <GithubLogo size={54} />
+        </a>
+      </div>
+    </footer>
+  );
+}
+
 export default function RootLayout({
   children,
 }: {
@@ -36,30 +64,10 @@ export default function RootLayout({
           <span></span>
         </div>
         <Header />
-        <PageWrapper>{children}</PageWrapper>
-        <footer className="absolute bottom-10 z-10 px-[1%] max-lg:hidden">
-          <div className="md:flex hidden items-center gap-6 w-fit rotate-[20deg]">
-            <a
-              className="-mt-8 -rotate-12 transition-transform duration-200 hover:-rotate-[19deg]"
-              href="https://www.linkedin.com/in/alexander-mamani"
-              target="_blank"
-              rel="noreferrer noopener"
-              aria-label="Linkedin Profile"
-            >
-              <LinkedinLogo size={54} />
-            </a>
-
-            <a
-              className="transition-transform duration-200 hover:-rotate-[19deg]"
-              href="https://github.com/alexqs96"
-              target="_blank"
-              rel="noreferrer noopener"
-              aria-label="Github Profile"
-            >
-              <GithubLogo size={54} />
-            </a>
-          </div>
-        </footer>
+        <main className='max-lg:w-[90%] max-md:mx-auto md:ml-[15.5%] mt-5 md:pr-[3%]'>
+          {children}
+        </main>
+        <Footer />
       </body>
     </html>
   );
