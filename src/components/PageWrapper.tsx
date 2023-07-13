@@ -11,7 +11,7 @@ const PageWrapper = ({
 
   const pathname = usePathname()
   const querys = useSearchParams()
-  
+
   useEffect(() => {
     ExpandHeight()
   }, [querys.get('page'), querys.get('search') , pathname])
