@@ -36,7 +36,7 @@ export default function RootLayout({
           <span></span>
         </div>
         <Header />
-        {children}
+        <PageWrapper>{children}</PageWrapper>
         <footer className="absolute bottom-10 z-10 px-[1%] max-lg:hidden">
           <div className="md:flex hidden items-center gap-6 w-fit rotate-[20deg]">
             <a
