@@ -63,13 +63,13 @@ export default function RootLayout({
           <span></span>
           <span></span>
         </div>
-        <Header />
+        
         <main className='max-lg:w-[90%] max-md:mx-auto md:ml-[15.5%] mt-5 md:pr-[3%]'>
           <PageWrapper>
           {children}
           </PageWrapper>
         </main>
-        <Footer />
+
       </body>
     </html>
   );
