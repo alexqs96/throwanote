@@ -4,7 +4,7 @@ import localFont from "next/font/local";
 import PageWrapper from "@/components/PageWrapper";
 import Header from "@/components/Header";
 
-const virgilFont = localFont({ src: "../../public/fonts/Virgil.woff2" });
+const virgilFont = localFont({ src: "../fonts/Virgil.woff2" });
 
 export const metadata = {
   metadataBase: new URL(`https://throwanote.vercel.app`),
@@ -65,7 +65,9 @@ export default function RootLayout({
         </div>
         <Header />
         <main className='max-lg:w-[90%] max-md:mx-auto md:ml-[15.5%] mt-5 md:pr-[3%]'>
+          <PageWrapper>
           {children}
+          </PageWrapper>
         </main>
         <Footer />
       </body>
