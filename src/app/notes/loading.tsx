@@ -9,7 +9,7 @@ function Loading() {
       Children.toArray(
         skeleton.map(e =>(
           <div
-            className="note animate-pulse cursor-pointer w-full max-w-[300px] p-4 flex flex-col gap-5 text-lg group transition-transform duration-200 hover:scale-105"
+            className="note animate-pulse cursor-pointer w-full max-w-[300px] mb-10 p-4 flex flex-col gap-5 text-lg group transition-transform duration-200 hover:scale-105"
           >
             <p className="text-xl">#cargando</p>
             <p className="truncate">.....</p>

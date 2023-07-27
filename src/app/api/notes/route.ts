@@ -25,7 +25,7 @@ export async function GET(req: Request) {
     await connectMongo()
 
     const pages = await Note.find(filterOptions, "id -_id")
-    const data = await Note.find(filterOptions, "id preview -_id").skip((page*limitPage)-limitPage).limit(limitPage)
+    const data = await Note.find(filterOptions, "id preview -_id").skip((page*limitPage)-limitPage).limit(limitPage).sort({createdAt: -1})
 
     return NextResponse.json(
       {
