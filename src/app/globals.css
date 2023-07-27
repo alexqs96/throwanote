@@ -25,6 +25,7 @@ main{
 }
 
 a{
+  cursor: pointer;
   display: block;
   width: fit-content;
 }

@@ -1,6 +1,8 @@
 import { fetchHandler } from "@/lib/fetch_handler";
 import { Metadata } from "next";
 import NotesWrapper from "@/components/NotesWrapper";
+import { Suspense } from "react";
+import Loading from "./loading";
 
 export async function generateMetadata(
   { searchParams }: {searchParams: {search: string}},
@@ -37,7 +39,9 @@ export default async function Notes({
     <>
     {
       data?
-      <NotesWrapper data={data} amount={+amount} searchParams={searchParams} />
+      <Suspense fallback={<Loading/>}>
+          <NotesWrapper data={data} amount={+amount} searchParams={searchParams} />
+      </Suspense>
       :
       null
     }

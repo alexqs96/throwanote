@@ -29,6 +29,16 @@ const Pagination = ({
           href={
             "/notes?" +
             (search ? "search=" + search + "&" : "") +
+            ("page=1")
+          }
+          className="note py-2 px-3 flex items-center"
+        >
+          {"<<"}
+        </Link>
+        <Link
+          href={
+            "/notes?" +
+            (search ? "search=" + search + "&" : "") +
             ("page=" + (page - 1 > 0 ? page - 1 : 1))
           }
           className="note py-2 px-3 flex items-center"
@@ -62,6 +72,16 @@ const Pagination = ({
           className="py-2 px-3 note flex items-center"
         >
           {">"}
+        </Link>
+        <Link
+          href={
+            "/notes?" +
+            (search ? "search=" + search + "&" : "") +
+            ("page=" + (amountPages))
+          }
+          className="note py-2 px-3 flex items-center"
+        >
+          {">>"}
         </Link>
       </div>
     </>

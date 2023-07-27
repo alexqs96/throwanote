@@ -4,6 +4,12 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import ExpandHeight from '@/helpers/expandHeight';
 
+interface createResponse {
+  message: string;
+  status: number;
+  statusText: string;
+}
+
 const FormValues = z.object({
   id: z.string().min(4).max(80),
   content: z.string().min(4),
@@ -39,32 +45,39 @@ const CreatePost = () => {
       sendButton.textContent = postingNote
 
       try {
-        await fetch("/api/notes", {
+        const res = await fetch("/api/notes", {
           method: "POST",
           headers: {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify(data)
         })
-        .then(res => res.json())
-        .then(
-          (res) => {
-            console.log(res);
-            
 
-            sendButton.classList.add("bg-red-500");
-            sendButton.textContent = res.message
+        if (res.status === 200) {
+          const response: createResponse = await res.json()
 
-            setTimeout(() => {  
-              sendButton.removeAttribute("disabled");
-              sendButton.classList.remove("bg-red-500");
-              sendButton.textContent = postNote
-            }, 4000);
-          }
-        )
+          sendButton.textContent = response.message
+
+          setTimeout(() => {  
+            sendButton.removeAttribute("disabled");
+            sendButton.textContent = postNote
+          }, 4000);
+        }
+        else
+        {
+          const response: createResponse = await res.json()
+
+          sendButton.classList.add("notsent");
+          sendButton.textContent = response.message
+
+          setTimeout(() => {  
+            sendButton.removeAttribute("disabled");
+            sendButton.classList.remove("notsent");
+            sendButton.textContent = postNote
+          }, 4000);
+        }
       } catch (error : any) {
         console.log(error);
-
         sendButton.classList.add("notsent");
         sendButton.textContent = "Error en el servidor"
         setTimeout(() => {

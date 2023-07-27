@@ -87,12 +87,13 @@ export async function POST(req: Request) {
     }
   
     const newNote = new Note({
-      id: id.toLowerCase(),
+      id: id.replace(/[^\w\s]|_/g, '_').split(' ').join('_').toLowerCase(),
       content,
       preview: content.substring(0, 20) + "...",
       private: privateState? privateState : false,
       secret: secret.length? secret : "empty"
     });
+    
 
     const noteStatus = await newNote.save()
 

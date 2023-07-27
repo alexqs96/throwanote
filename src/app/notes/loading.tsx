@@ -1,6 +1,6 @@
 import { Children } from "react"
 
-function loading() {
+function Loading() {
   const skeleton = Array.from({ length: 10 })
 
   return (
@@ -24,4 +24,4 @@ function loading() {
   )
 }
 
-export default loading
+export default Loading
