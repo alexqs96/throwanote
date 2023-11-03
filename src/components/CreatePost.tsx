@@ -53,6 +53,8 @@ const CreatePost = () => {
           body: JSON.stringify(data)
         })
 
+        console.dir(res);
+
         if (res.status === 200) {
           const response: createResponse = await res.json()
 
