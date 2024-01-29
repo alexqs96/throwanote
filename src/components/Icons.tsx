@@ -1,36 +1,5 @@
-export const Logo = ({size}:{size: number}) => {
-  return(
-    <svg width={size} height={size} viewBox="0 0 161.9 151.31" className="md:w-10 md:h-10">
-      <defs>
-        <linearGradient id="linear-gradient" x1="-56.75" y1="155.97" x2="-75.89" y2="106.36" gradientTransform="translate(250.27 468.52) scale(3 -3)" gradientUnits="userSpaceOnUse">
-          <stop offset=".22" stopColor="#231f20" stopOpacity="0"/>
-          <stop offset=".47" stopColor="#1e1a1b" stopOpacity=".13"/>
-          <stop offset=".78" stopColor="#0f0d0d" stopOpacity=".29"/>
-          <stop offset="1" stopColor="#000" stopOpacity=".4"/>
-        </linearGradient>
-        <linearGradient id="linear-gradient-2" x1="-56.75" y1="155.97" x2="-75.89" y2="106.36" gradientTransform="translate(250.27 468.52) scale(3 -3)" gradientUnits="userSpaceOnUse">
-          <stop offset="0" stopColor="#fff" stopOpacity=".2"/>
-          <stop offset=".78" stopColor="#fff" stopOpacity="0"/>
-        </linearGradient>
-        <linearGradient id="linear-gradient-3" x1="-37.52" y1="108.45" x2="-55.98" y2="154.21" gradientTransform="translate(250.27 468.52) scale(3 -3)" gradientUnits="userSpaceOnUse">
-          <stop offset="0" stopColor="#231f20" stopOpacity="0"/>
-          <stop offset=".33" stopColor="#1e1a1b" stopOpacity=".13"/>
-          <stop offset=".72" stopColor="#0f0d0d" stopOpacity=".29"/>
-          <stop offset="1" stopColor="#000" stopOpacity=".4"/>
-        </linearGradient>
-      </defs>
-      <g>
-        <polygon className="md:waving" points="161.9 151.31 104.84 0 102.17 0 59.05 0 56.38 0 0 151.31 45.79 151.31 80.74 57.52 116.11 151.31 161.9 151.31" fill="#4f15e3" />
-        <polygon points="102.17 0 56.38 0 0 151.31 45.79 151.31 102.17 0" fill="url(#linear-gradient)"/>
-        <polygon points="102.17 0 56.38 0 0 151.31 45.79 151.31 102.17 0" fill="url(#linear-gradient-2)"/>
-        <polygon points="161.9 151.31 104.84 0 102.17 0 80.74 57.52 116.11 151.31 161.9 151.31" fill="url(#linear-gradient-3)"/>
-      </g>
-    </svg>
-  )
-}
-
-export const GithubLogo = ({size}:{size: number}) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24">
+export const GithubLogo = ({size, ...className}:{size: number, className?: string}) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" {...className}>
     <title>Github</title>
     <path
       className="fill-black dark:fill-white duration-200"
@@ -39,8 +8,8 @@ export const GithubLogo = ({size}:{size: number}) => (
   </svg>
 )
 
-export const LinkedinLogo = ({size}:{size: number}) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24">
+export const LinkedinLogo = ({size, ...className}:{size: number, className?: string}) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" {...className}>
     <title>Linkedin</title>
     <path
       className="fill-black dark:fill-white duration-200"
@@ -49,12 +18,13 @@ export const LinkedinLogo = ({size}:{size: number}) => (
   </svg>
 )
 
-export const SearchIcon = ({size}:{size: number}) => (
+export const SearchIcon = ({size, ...className}:{size: number, className: string}) => (
   <svg
       xmlns="http://www.w3.org/2000/svg"
       width={size}
       height={size}
       viewBox="0 0 388.92 388.93"
+      {...className}
   >
       <path
           fill="#000"
@@ -67,20 +37,21 @@ export const SearchIcon = ({size}:{size: number}) => (
   </svg>
 )
 
-export const KeyLogo = ({ size, color }: {size: number, color: string}) => (
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 532 212.8" width={size} height={size} fill={color}>
+export const KeyLogo = ({size, ...className}:{size: number, className?: string}) => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 532 212.8" width={size} height={size} {...className}>
       <path
         d="M507.36,152.88H495.6V131.6h11.76a24.64,24.64,0,0,0,0-49.28H210C198.8,35.28,156.8,0,106.4,0a106.4,106.4,0,0,0,0,212.8c50.4,0,92.4-35.28,103.6-82.32H429.52v21.28H417.76a24.64,24.64,0,1,0,0,49.28h89.6A24.86,24.86,0,0,0,532,176.4c0-12.88-11.2-23.51-24.64-23.51Zm-401,11.76A57.68,57.68,0,1,1,164.08,107,57.59,57.59,0,0,1,106.4,164.64Z"
       />
   </svg>
 )
 
-export const UrlLogo = ({size}:{size: number}) => (
+export const UrlLogo = ({size, ...className}:{size: number, className?: string}) => (
   <svg
       xmlns="http://www.w3.org/2000/svg"
       width={size}
       height={size}
       viewBox="0 0 507.5 525"
+      {...className}
   >
       <path d="M122.5,5.07,5.07,122.5H122.5Z" />
       <path d="M140,385V192.5a26.32,26.32,0,0,1,26.25-26.25H402.5V8.75A8.78,8.78,0,0,0,393.75,0H140V131.25a8.78,8.78,0,0,1-8.75,8.75H0V516.25A8.78,8.78,0,0,0,8.75,525h385a8.78,8.78,0,0,0,8.75-8.75v-105H166.25A26.32,26.32,0,0,1,140,385Z" />
@@ -90,12 +61,13 @@ export const UrlLogo = ({size}:{size: number}) => (
   </svg>
 )
 
-export const BookLogo = ({size}:{size: number}) => (
+export const BookLogo = ({size, ...className}:{size: number, className?: string}) => (
   <svg
       xmlns="http://www.w3.org/2000/svg"
       width={size}
       height={size}
       viewBox="0 0 24 24"
+      {...className}
   >
       <path d="M12 4.706c-2.938-1.83-7.416-2.566-12-2.706v17.714c3.937.12 7.795.681 10.667 1.995.846.388 1.817.388 2.667 0 2.872-1.314 6.729-1.875 10.666-1.995v-17.714c-4.584.14-9.062.876-12 2.706zm-10 13.104v-13.704c5.157.389 7.527 1.463 9 2.334v13.168c-1.525-.546-4.716-1.504-9-1.798zm20 0c-4.283.293-7.475 1.252-9 1.799v-13.171c1.453-.861 3.83-1.942 9-2.332v13.704zm-2-10.214c-2.086.312-4.451 1.023-6 1.672v-1.064c1.668-.622 3.881-1.315 6-1.626v1.018zm0 3.055c-2.119.311-4.332 1.004-6 1.626v1.064c1.549-.649 3.914-1.361 6-1.673v-1.017zm0-2.031c-2.119.311-4.332 1.004-6 1.626v1.064c1.549-.649 3.914-1.361 6-1.673v-1.017zm0 6.093c-2.119.311-4.332 1.004-6 1.626v1.064c1.549-.649 3.914-1.361 6-1.673v-1.017zm0-2.031c-2.119.311-4.332 1.004-6 1.626v1.064c1.549-.649 3.914-1.361 6-1.673v-1.017zm-16-6.104c2.119.311 4.332 1.004 6 1.626v1.064c-1.549-.649-3.914-1.361-6-1.672v-1.018zm0 5.09c2.086.312 4.451 1.023 6 1.673v-1.064c-1.668-.622-3.881-1.315-6-1.626v1.017zm0-2.031c2.086.312 4.451 1.023 6 1.673v-1.064c-1.668-.622-3.881-1.316-6-1.626v1.017zm0 6.093c2.086.312 4.451 1.023 6 1.673v-1.064c-1.668-.622-3.881-1.315-6-1.626v1.017zm0-2.031c2.086.312 4.451 1.023 6 1.673v-1.064c-1.668-.622-3.881-1.315-6-1.626v1.017z" />
   </svg>

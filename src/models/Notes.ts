@@ -1,5 +1,8 @@
 import mongoose from "mongoose"
 
+mongoose.connect(process.env.DB_URI as string);
+mongoose.Promise = global.Promise;
+
 const noteSchema = new mongoose.Schema(
   {
     id: {
@@ -15,13 +18,14 @@ const noteSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    private: {
-      type: Boolean,
-      required: true,
-    },
     secret: {
       type: String,
+      default: null
+    },
+    edit: {
+      type: String,
       required: true,
+      default: null
     },
   },
   {

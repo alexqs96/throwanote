@@ -3,6 +3,7 @@ import { z } from 'zod';
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import ExpandHeight from '@/helpers/expandHeight';
+import { useState } from 'react';
 
 interface createResponse {
   message: string;
@@ -13,22 +14,23 @@ interface createResponse {
 const FormValues = z.object({
   id: z.string().min(4).max(80),
   content: z.string().min(4),
-  privateState: z.boolean(),
-  secret: z.string().min(4),
+  secret: z.string().min(4).nullable(),
+  edit: z.string().min(4).nullable(),
 });
 
 const CreatePost = () => {
+  const [privateState, setPrivateState] = useState(false)
+
   const {
     register,
     handleSubmit,
     setValue,
-    watch,
     formState: { errors },
   } = useForm<FormData>({
     resolver: zodResolver(FormValues),
     defaultValues: {
-      privateState: false,
-      secret: "empty",
+      secret: null,
+      edit: null,
     },
   });
 
@@ -127,12 +129,12 @@ const CreatePost = () => {
           )}
 
           <div className="w-fit flex border bg-white mt-2">
-            <button className={"px-3 py-2 " + (!watch('privateState')? "bg-black text-white" : '')} type="button" onClick={() => {setValue('privateState', false), setValue('secret', "empty")}}>Publica</button>
-            <button className={"px-3 py-2 " + (watch('privateState')? "bg-black text-white" : '')} type="button" onClick={() => {setValue('privateState', true), setValue('secret', "")}}>Privada</button>
+            <button className={"px-3 py-2 " + (!privateState? "bg-black text-white" : '')} type="button" onClick={() => {setPrivateState(false), setValue('secret', null)}}>Publica</button>
+            <button className={"px-3 py-2 " + (privateState? "bg-black text-white" : '')} type="button" onClick={() => {setPrivateState(true), setValue('secret', "")}}>Privada</button>
           </div>
 
           {
-            watch('privateState')?
+            privateState?
             <>
               <label className="font-semibold text-2xl mt-3 mb-0.5 flex items-center whitespace-nowrap" htmlFor="secret">
                 Clave: 
@@ -153,6 +155,17 @@ const CreatePost = () => {
             :
             null
           }
+
+          <label className="font-semibold text-2xl mt-3 mb-0.5 flex items-center whitespace-nowrap" htmlFor="edit">
+            Clave de Edición: 
+            <input
+              id="edit"
+              className="ml-2 py-2 bg-transparent outline-none w-full placeholder-black/50"
+              placeholder='escribi una clave'
+              type="text"
+              {...register("edit", { required: true, minLength: 4 })}
+            />
+          </label>
 
           <button
             onClick={() => ExpandHeight()}

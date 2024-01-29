@@ -50,7 +50,7 @@ const PrivateNote = ({id}: {id: string}) => {
               type="text"
             />
             <button onClick={() => getPrivateNote()} className="bg-black p-2">
-              <KeyLogo size={32} color={"#fff"} />
+              <KeyLogo size={32} className="fill-white" />
             </button>
           </div>
         </div>

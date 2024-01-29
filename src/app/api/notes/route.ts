@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server"
-import connectMongo from "@/lib/connect_db"
 import Note from "@/models/Notes"
 import { NOTES_MESSAGES, SERVER_MESSAGES, NOTE_MESSAGES } from "@/lib/constants"
+import bcrypt from "bcryptjs"
 
 /**
  * Retrieves all notes from the database
@@ -18,12 +18,10 @@ export async function GET(req: Request) {
   const page = pageQuery? +pageQuery : 1
   const searchQuery = searchParams.get('search') || null
   const search = searchQuery? searchQuery : null
-  const filterOptions = search? {id : {'$regex': new RegExp(search, "i")}, private : false} : {private: false}  
+  const filterOptions = search? {id : {'$regex': new RegExp(search, "i")}, secret : null} : {secret: null}  
   const limitPage = 10
 
   try {
-    await connectMongo()
-
     const pages = await Note.find(filterOptions, "id -_id")
     const data = await Note.find(filterOptions, "id preview -_id").skip((page*limitPage)-limitPage).limit(limitPage).sort({createdAt: -1})
 
@@ -60,12 +58,10 @@ export async function GET(req: Request) {
 
 export async function POST(req: Request) {
   const body = await req.json()
-  const { id, content, privateState, secret } = body
+  const { id, content, secret, edit } = body
 
   try {
-    await connectMongo()
-
-    if (!id || !content || privateState && !secret) {
+    if (!id || !content || !edit) {
       return NextResponse.json({
         message: NOTE_MESSAGES.MISSING_FIELDS,
       },
@@ -86,12 +82,15 @@ export async function POST(req: Request) {
       })
     }
   
+    const salt = await bcrypt.genSalt(10);
+    const hash = secret? await bcrypt.hash(secret, salt) : null;
+
     const newNote = new Note({
       id: id.replace(/[^\w\s]|_/g, '_').split(' ').join('_').toLowerCase(),
       content,
       preview: content.substring(0, 20) + "...",
-      private: privateState? privateState : false,
-      secret: secret.length? secret : "empty"
+      secret: hash || null,
+      edit: edit || null
     });
     
 

@@ -4,6 +4,8 @@ export interface INote {
   createdAt: string
   preview: string
   private: boolean
+  secret: string
+  edit: string
 }
 
 export interface IResponseApi {

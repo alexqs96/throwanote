@@ -37,7 +37,7 @@ const Header = () => {
           placeholder="Buscar..."
         />
         <button onClick={() => search()}>
-          <SearchIcon size={24} />
+          <SearchIcon size={24} className={"hover:rotate-6"} />
         </button>
       </div>
 

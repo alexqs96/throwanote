@@ -1,6 +1,7 @@
 import CreatePost from "@/components/CreatePost";
+import { Metadata } from "next";
 
-export const metadata = {
+export const metadata : Metadata = {
   title: "Crear Nota"
 }
 

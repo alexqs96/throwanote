@@ -1,21 +1,23 @@
-import { GithubLogo, LinkedinLogo } from "@/components/Icons";
 import "./globals.css";
+import { GithubLogo, LinkedinLogo } from "@/components/Icons";
 import localFont from "next/font/local";
-import PageWrapper from "@/components/PageWrapper";
 import Header from "@/components/Header";
+import { Metadata } from "next";
 
 const virgilFont = localFont({ src: "../fonts/Virgil.woff2" });
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Throw a Note",
-  openGraph:{
+  description: "Crea notas anonimas publicas o privadas en throw a note.",
+  openGraph: {
     type: "website",
     url: "https://throwanote.vercel.app",
     title: "Throw a Note",
     siteName: "Throw a Note",
-    description: 'Crea notas anonimas publicas o privadas en throw a note.',
-    images: "/img/og_image.png",
-  }
+    description: "Crea notas anonimas publicas o privadas en throw a note.",
+    images: "/og_image.png",
+  },
+  metadataBase: new URL("https://throwanote.vercel.app"),
 };
 
 function Footer() {
@@ -54,7 +56,7 @@ export default function RootLayout({
   return (
     <html
       lang="es"
-      className="max-w-[1920px] mx-auto border-x border-x-black/70 bg-white"
+      className="max-w-[1920px] mx-auto border-x border-x-black/70 bg-white h-dvh"
     >
       <body className={"paperLines relative " + virgilFont.className}>
         <div className="md:paperHoles">
@@ -63,10 +65,8 @@ export default function RootLayout({
           <span></span>
         </div>
         <Header />
-        <main className='max-lg:w-[90%] max-md:mx-auto md:ml-[15.5%] mt-5 md:pr-[3%]'>
-          <PageWrapper>
+        <main className="max-lg:w-[90%] max-md:mx-auto md:ml-[15.5%] mt-5 md:pr-[3%]">
           {children}
-          </PageWrapper>
         </main>
         <Footer />
       </body>
