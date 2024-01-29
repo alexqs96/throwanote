@@ -1,10 +1,10 @@
 'use client'
 import Link from "next/link";
-import { useRef } from "react";
+import { Suspense, useRef } from "react";
 import { BookLogo, SearchIcon } from "./Icons";
 import { useRouter, useSearchParams } from "next/navigation";
 
-const Header = () => {
+const HeaderBar = () => {
   const searchRef = useRef<HTMLInputElement>(null)
   const searchParams = useSearchParams()
   const { push } = useRouter()
@@ -47,5 +47,13 @@ const Header = () => {
     </header>
   );
 };
+
+function Header(){
+  return (
+    <Suspense fallback={null}>
+      <HeaderBar />
+    </Suspense>
+  )
+}
 
 export default Header;
